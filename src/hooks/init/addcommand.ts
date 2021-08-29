@@ -1,4 +1,4 @@
-import {Command} from '@oclif/command'
+import {Command, flags} from '@oclif/command'
 import * as Config from '@oclif/config'
 import ux from 'cli-ux'
 
@@ -15,6 +15,10 @@ class DynamicPlugin extends Config.Plugin {
     const cmd = class extends Command {
       static id = 'mydynamiccommand'
       static load() { return cmd }
+      static flags = {
+        verbose: flags.boolean({ char: 'v' }),
+        name: flags.string({ char: 'n' }),
+      }
       static args = [{ name: 'path' }]
       async run() {
         ux.log('running mydynamiccommand')
