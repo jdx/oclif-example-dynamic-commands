@@ -15,6 +15,7 @@ class DynamicPlugin extends Config.Plugin {
     const cmd = class extends Command {
       static id = 'mydynamiccommand'
       static load() { return cmd }
+      static args = [{ name: 'path' }]
       async run() {
         ux.log('running mydynamiccommand')
       }
